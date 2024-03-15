@@ -1,9 +1,10 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./component/NavBar";
+import GameGrid from "./component/GameGrid";
 
 function App() {
   return (
-    <Grid /*defines layout templates for different screen sizes */
+    <Grid
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
@@ -13,13 +14,10 @@ function App() {
         <NavBar />
       </GridItem>
       <Show above="lg">
-        {/*Conditionally render aside on larger screens */}
-        <GridItem area="aside" bg="gold">
-          Aside
-        </GridItem>
+        <GridItem area="aside">Aside</GridItem>
       </Show>
-      <GridItem area="main" bg="dodgerblue">
-        Main
+      <GridItem area="main">
+        <GameGrid />
       </GridItem>
     </Grid>
   );
