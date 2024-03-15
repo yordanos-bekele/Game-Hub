@@ -1,5 +1,6 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./component/NavBar";
+
 function App() {
   return (
     <Grid /*defines layout templates for different screen sizes */
