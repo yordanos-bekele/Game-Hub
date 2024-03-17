@@ -3,6 +3,7 @@ import { game } from "../services/hook/useGames";
 import PlatfomIconList from "./PlatfomIconList";
 import Score from "./Score";
 import getCroppedImageUrl from "../services/getCroppedImageUrl";
+
 interface Props {
   Game: game;
 }
