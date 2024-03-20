@@ -5,7 +5,7 @@ import GenreList from "./component/GenreList";
 import useGenre from "./services/hook/useGenre";
 
 function App() {
-  const { data } = useGenre();
+  const { data, isLoading, error } = useGenre();
 
   return (
     <Grid
@@ -23,7 +23,7 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenreList genres={data} />
+          <GenreList genres={data} isLoading={isLoading} error={error} />
         </GridItem>
       </Show>
       <GridItem area="main">
