@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient from "../api-client";
-import { CanceledError } from "axios";
+import useData from "./useData";
 
 export interface genre{
     id: number;
@@ -14,25 +12,7 @@ export interface FetchGenreResponse{
     results: genre[]
 }
 
-const useGenre = ()=>{
-   const [genres, setGenres] = useState<genre[]>([])
-   const [error, setError] = useState('');
-   const [isLoading, setIsLoading] = useState(false);
+const useGenre = ()=> useData<genre>('/genres')
+   
 
-   useEffect(()=>{
-    const controller = new AbortController();
-    setIsLoading(true)
-    apiClient.get<FetchGenreResponse>('https://api.rawg.io/api/genres', {signal: controller.signal})
-            .then((res)=> {setGenres(res.data.results)
-            setIsLoading(false)})
-            .catch((err)=> {if(err instanceof CanceledError) return;
-       
-                 setError(err.message)
-                 setIsLoading(false);
-                })
-                return ()=> controller.abort();     
-
-   },[])
-   return {genres, error, isLoading}
-}
 export default useGenre;
